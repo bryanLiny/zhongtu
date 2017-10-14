@@ -1,0 +1,11 @@
+<view class="description"  style='background-image:url("{{descImg}}")'>
+  <view class='title'>
+    十周年*幸运大转盘抽iPhone8
+  </view>
+  <view class='desc'>
+    说明：先抽先得，数量有限！每人可无条件获得1次抽奖资格,每分享给1个朋友可再获得一次抽奖机会
+  </view>
+  <view class='time'>
+    2017/10/01-201710/08
+  </view>
+</view>

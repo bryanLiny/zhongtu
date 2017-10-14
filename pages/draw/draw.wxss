@@ -1,0 +1,20 @@
+page {
+  font-size: 32rpx;
+}
+
+.description {
+  width: 95%;
+  height: 300rpx;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+}
+
+.description .time {
+  position: absolute;
+  bottom: 11%;
+  width: 100%;
+  color: #fff;
+}

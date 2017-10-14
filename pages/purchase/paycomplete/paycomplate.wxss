@@ -1,0 +1,86 @@
+/* pages/purchase/paycomplete/paycomplate.wxss */
+page{
+  background-color: #f2f2f2;
+  font-size: 30rpx;
+}
+.payInfo{
+  background-color: #ffffff;
+  border-radius: 10px;
+  margin: 15px;
+  padding: 10px;
+  text-align: center;
+}
+.payInfo .first{
+  height: 35px;
+  line-height: 35px;
+  color: #333;
+  font-size: 16px;
+  font-weight: 600;
+}
+.payInfo .img{
+  width: 20px;
+  height: 20px;
+  position: relative;
+  top: 5px;
+  margin-right: 10px;
+}
+.payInfo .second{
+  color: #999999;
+  font-size: 14px;
+}
+.payInfo .count{
+  color: #E02E24;
+}
+.success .third{
+  margin-top: 30px;
+}
+.success .third .primary{
+  height: 35px;
+  line-height: 35px;
+}
+
+.error .third{
+  margin-top: 30px;
+}
+.error .third .warn{
+  height: 35px;
+  line-height: 35px;
+}
+.show{
+  display: block;
+}
+.hide{
+  display: none;
+}
+
+.message{
+  background-color: #ffffff;
+  margin: 0 15px;
+  border-radius: 10px;
+}
+.message .detail{
+  padding: 15px 10px;
+}
+.message .title{
+  font-size: 16px;
+  color: #323232;
+  font-weight: 600;
+}
+
+.message .huise{
+  color: #999999;
+  font-size: 14px;
+}
+.message .detailTitle{
+  margin: 20px 0 10px;
+  font-size: 14px;
+  color: #323232;
+}
+.message .me{
+  color: #E02E24;
+  font-size: 14px;
+  padding-left: 10px;
+  height: 35px;
+  line-height: 35px;
+  border-top: 1px solid #eee;
+}
