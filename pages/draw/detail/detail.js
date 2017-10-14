@@ -9,7 +9,7 @@ Page({
     drawImg: 'http://bryanly.oss-cn-shenzhen.aliyuncs.com/chou.png',
     chanceCount: 1,
     //大转盘实例
-    btnDrawImg:'../../../images/draw/btndraw.png',
+    btnDrawImg:'http://bryanly.oss-cn-shenzhen.aliyuncs.com/btndraw.png',
     circleList: [],//圆点数组
     awardList: [],//奖品数组
     colorCircleFirst: '#FFDF2F',//圆点颜色1
