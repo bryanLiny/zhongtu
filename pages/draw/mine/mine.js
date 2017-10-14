@@ -1,5 +1,3 @@
-// pages/purchase/purchase.js
-import util from "../../utils/util.js";
 Page({
   /**
    * 页面的初始数据
@@ -8,34 +6,51 @@ Page({
     sortindex: 0,  //排序索引
     sortid: null,  //排序id
     sort: [],
-    activitylist: [], //会议室列表列表
+    myitems: [], //会议室列表列表
     scrolltop: null, //滚动位置
-    page: 0  //分页
+    page: 0,  //分页
+    activeTab: true
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.fetchPurchaseData();
+    this.loadDataDistType();
   },
-  fetchPurchaseData: function () {  //获取会议室列表
-    const perpage = 10;
-    this.setData({
-      page: this.data.page + 1
-    })
-    const page = this.data.page;
-    const newlist = [];
-    for (var i = (page - 1) * perpage; i < page * perpage; i++) {
-      newlist.push({
-        "id": i + 1,
-        "title": "VIP客户专享*幸运大转盘抽终身保养卡",
-        "price": Math.floor(Math.random() * 10) + "元博",
-        "imgurl": "http://bryanly.oss-cn-shenzhen.aliyuncs.com/draw.png"
-      })
+
+  changeTab: function (event) {
+    var dataset = event.currentTarget.dataset;
+    var type = dataset['type'];
+    var flag = true;
+    if (type == 'award' && this.data.activeTab) {
+      flag = flag;
+      this.loadDataDistType();
+    } else if (type == 'draw') {
+      flag = !flag;
+      this.loadDataDistType();
     }
     this.setData({
-      activitylist: this.data.activitylist.concat(newlist)
+      activeTab: flag
+    });
+  },
+  loadDataDistType: function () {
+    var fromServer = [];
+    for (var i = 0; i < 3; i++) {
+      var data = {
+        id: Math.floor(Math.random() * 10000) + '',
+        code: Math.floor(Math.random() * 100000000000) + '',
+        date: '2017-10-11',
+        name: '铠甲镀晶',
+        qrcodeImg:'../../../images/user/qrcode.png',
+        myImg:'http://bryanly.oss-cn-shenzhen.aliyuncs.com/itembg.png',
+        count: Math.floor(Math.random() * 10) + '',
+        price: Math.floor(Math.random() * 1000)
+      }
+      fromServer.push(data);
+    }
+    this.setData({
+      myitems: fromServer
     })
   },
   setSortBy: function (e) { //选择排序方式
@@ -61,7 +76,7 @@ Page({
     })
   },
   scrollLoading: function () { //滚动加载
-    this.fetchPurchaseData();
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -96,10 +111,8 @@ Page({
    */
   onPullDownRefresh: function () {
     this.setData({
-      page: 0,
-      activitylist: []
+      page: 0
     })
-    this.fetchPurchaseData();
     this.fetchSortData();
     setTimeout(() => {
       wx.stopPullDownRefresh()

@@ -13,7 +13,11 @@
     "pages/purchase/immediately/immediately",
     "pages/user/detail/detail",
     "pages/user/mine/mine",
-    "pages/user/award/award"
+    "pages/user/award/award",
+    "pages/user/replace/replace",
+    "pages/user/replaceAward/replaceAward",
+    "pages/draw/detail/detail",
+    "pages/draw/mine/mine"
   ],
   "tabBar": {
     "list": [

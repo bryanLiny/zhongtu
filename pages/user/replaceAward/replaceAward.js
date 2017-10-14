@@ -5,13 +5,13 @@ Page({
    * 页面的初始数据
    */
   data: {
+    userName:"世界在脚下",
     goodInfo: {
       id: "1",
       goodImg: "http://bryanly.oss-cn-shenzhen.aliyuncs.com/benz.png",
-      goodTitle: "￥4980元铠甲镀晶",
-      time: 3,
-      inviteFlag: true
-    }
+      goodTitle: "￥4980元铠甲镀晶"
+    },
+    giftName:"￥10元m免费洗车一次"
   },
   lookMine: function (event) {
     wx.redirectTo({
@@ -67,29 +67,16 @@ Page({
   onReachBottom: function () {
 
   },
-  replaceAward: function(event){
+  replaceAward: function (event) {
 
-  wx.redirectTo({
-    url: '../replace/replace?name=世界在你脚下',
-  })
+    wx.redirectTo({
+      url: '../replace/replace?name=世界在你脚下',
+    })
   },
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function (res) {
-    if (res.from === 'button') {
-      // 来自页面内转发按钮
-      console.log(res.target)
-    }
-    return {
-      title: '大众维修店',
-      path: '/pages/user/replace/replace?share=true',
-      success: function (res) {
-        // 转发成功
-      },
-      fail: function (res) {
-        // 转发失败
-      }
-    }
+    
   }
 })
