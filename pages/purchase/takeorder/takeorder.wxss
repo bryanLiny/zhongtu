@@ -21,7 +21,7 @@ page {
 
 .goodInfoBox .triangle {
   height: 180rpx;
-  width: 20px;
+  width: 40rpx;
 }
 
 .goodInfoBox .infoLeft {
@@ -105,23 +105,23 @@ page {
   line-height: 70rpx;
   height: 70rpx;
   position: relative;
-  font-size: 12px;
+  font-size: 28rpx;
   display: flex;
   align-items: center;
 }
 
 .contactInfo .left .house {
-  width: 13.5px;
-  height: 12px;
+  width: 27rpx;
+  height: 24rpx;
 }
 
 .contactInfo .left .addr {
-  width: 10px;
-  height: 13px;
+  width: 20rpx;
+  height: 26rpx;
 }
 
 .contactInfo .left .text {
-  margin-left: 10px;
+  margin-left: 20rpx;
 }
 
 .contactInfo .right {
@@ -130,8 +130,8 @@ page {
 }
 
 .contactInfo .right .phone {
-  width: 30px;
-  height: 30px;
+  width: 60rpx;
+  height: 60rpx;
 }
 
 .menbers {
@@ -153,9 +153,9 @@ page {
 }
 
 .menbers .face {
-  width: 47px;
-  height: 47px;
-  margin-right: 10px;
+  width: 90rpx;
+  height: 90rpx;
+  margin-right: 20rpx;
 }
 
 .menbers .menber {
@@ -164,11 +164,11 @@ page {
   justify-content: space-between;
   border-bottom: 2rpx solid #f2f2f2;
   color: #5c5c5c;
-  font-size: 13px;
+  font-size: 28rpx;
 }
 
 .menbers .faceName {
-  height: 70px;
+  height: 130rpx;
   display: flex;
   align-items: center;
 }
@@ -207,6 +207,6 @@ page {
 
 @media all and (max-width: 320px) {
   .goodInfoBox .triangle {
-    height: 75px;
+    height: 178rpx;
   }
 }

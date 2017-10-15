@@ -1,5 +1,4 @@
 <!--pages/purchase/my/my.wxml-->
-<text></text>
 <view class='tabs'>
   <text bindtap='changeTab' data-count="3" data-tab="1" class='tab {{flag == 1 ? "active" : ""}}'>全部</text>
   <text bindtap='changeTab' data-count="2" data-tab="2" class='tab {{flag == 2 ? "active" : ""}}'>众筹中</text>

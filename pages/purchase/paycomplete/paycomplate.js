@@ -26,7 +26,7 @@ Page({
     } else if (type == 'check') {
       url = '../my/my';
     }
-    wx.navigateTo({
+    wx.redirectTo({
       url: url,
     });
   },
