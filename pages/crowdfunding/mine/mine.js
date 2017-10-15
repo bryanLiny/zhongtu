@@ -15,7 +15,7 @@ Page({
       "desc": "3人拼一元免费洗车10次",
       "status": "已结束",
       "pCode": "899773975584",
-      "imgurl": "../../../images/bg/baozi.png"
+      "imgurl": "http://bryanly.oss-cn-shenzhen.aliyuncs.com/baozi.png"
     }
   },
 
