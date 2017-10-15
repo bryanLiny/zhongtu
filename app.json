@@ -28,30 +28,32 @@
     "pages/purchase/center/center"
   ],
   "tabBar": {
+    "color": "##B2B2B2",
+    "selectedColor": "#E02E24",
     "list": [
       {
         "pagePath": "pages/purchase/purchase",
         "text": "拼团",
-        "iconPath": "images/xihuan.png",
-        "selectedIconPath": "images/xihuanfill.png"
+        "iconPath": "images/pintuan.png",
+        "selectedIconPath": "images/pintuanfull.png"
       },
       {
         "pagePath": "pages/draw/draw",
         "text": "抽奖",
-        "iconPath": "images/shizhong.png",
-        "selectedIconPath": "images/shizhongfill.png"
+        "iconPath": "images/choujiang.png",
+        "selectedIconPath": "images/choujiangfull.png"
       },
       {
         "pagePath": "pages/crowdfunding/crowdfunding",
         "text": "众筹",
-        "iconPath": "images/radio.png",
-        "selectedIconPath": "images/radiofill.png"
+        "iconPath": "images/zhongchou.png",
+        "selectedIconPath": "images/zhongchoufull.png"
       },
       {
         "pagePath": "pages/user/user",
         "text": "用户画像",
-        "iconPath": "images/pengyou.png",
-        "selectedIconPath": "images/pengyoufill.png"
+        "iconPath": "images/user.png",
+        "selectedIconPath": "images/userfull.png"
       }
     ]
   },
