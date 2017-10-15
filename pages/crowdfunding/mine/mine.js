@@ -44,7 +44,7 @@ Page({
         "status": util.getRandomArrayElement(["进行中", "报名中", "已结束"]),
         "count": Math.floor(Math.random() * 10),
         "char_gt": ">",
-        "imgurl": "../../../images/bg/baozi.png"
+        "imgurl": "http://bryanly.oss-cn-shenzhen.aliyuncs.com/baozi.png"
       })
     }
     this.setData({
