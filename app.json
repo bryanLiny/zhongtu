@@ -17,7 +17,12 @@
     "pages/user/replace/replace",
     "pages/user/replaceAward/replaceAward",
     "pages/draw/detail/detail",
-    "pages/draw/mine/mine"
+    "pages/draw/mine/mine",
+    "pages/crowdfunding/detail/detail",
+    "pages/crowdfunding/friendPay/friendPay",
+    "pages/crowdfunding/pay/pay",
+    "pages/crowdfunding/buy/buy",
+    "pages/crowdfunding/mine/mine"
   ],
   "tabBar": {
     "list": [

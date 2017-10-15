@@ -1,13 +1,13 @@
 <!--pages/purchase/purchase.wxml-->
 <view class="container">
-  <view class='header'>
+  <!-- <view class='header'>
     <view bindtap='changeTab' data-type="award" class='tab'>
       <text class='my myaward {{activeTab?"tab-active":""}}'>我的奖品</text>
     </view>
     <view bindtap='changeTab' data-type="draw" class='tab'>
       <text class='my mydraw {{activeTab?"":"tab-active"}}'>我的抽奖</text>
     </view>
-  </view>
+  </view> -->
   <view class='myItems' wx:for="{{myitems}}" wx:key="{{item.id}}">
     <view class='top'>
       <view class='left'>

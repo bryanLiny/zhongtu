@@ -9,7 +9,7 @@ Page({
     myitems: [], //会议室列表列表
     scrolltop: null, //滚动位置
     page: 0,  //分页
-    activeTab: true
+    // activeTab: true
   },
 
   /**
@@ -19,21 +19,21 @@ Page({
     this.loadDataDistType();
   },
 
-  changeTab: function (event) {
-    var dataset = event.currentTarget.dataset;
-    var type = dataset['type'];
-    var flag = true;
-    if (type == 'award' && this.data.activeTab) {
-      flag = flag;
-      this.loadDataDistType();
-    } else if (type == 'draw') {
-      flag = !flag;
-      this.loadDataDistType();
-    }
-    this.setData({
-      activeTab: flag
-    });
-  },
+  // changeTab: function (event) {
+  //   var dataset = event.currentTarget.dataset;
+  //   var type = dataset['type'];
+  //   var flag = true;
+  //   if (type == 'award' && this.data.activeTab) {
+  //     flag = flag;
+  //     this.loadDataDistType();
+  //   } else if (type == 'draw') {
+  //     flag = !flag;
+  //     this.loadDataDistType();
+  //   }
+  //   this.setData({
+  //     activeTab: flag
+  //   });
+  // },
   loadDataDistType: function () {
     var fromServer = [];
     for (var i = 0; i < 3; i++) {
@@ -42,8 +42,8 @@ Page({
         code: Math.floor(Math.random() * 100000000000) + '',
         date: '2017-10-11',
         name: '铠甲镀晶',
-        qrcodeImg:'../../../images/user/qrcode.png',
-        myImg:'http://bryanly.oss-cn-shenzhen.aliyuncs.com/itembg.png',
+        qrcodeImg: '../../../images/user/qrcode.png',
+        myImg: 'http://bryanly.oss-cn-shenzhen.aliyuncs.com/itembg.png',
         count: Math.floor(Math.random() * 10) + '',
         price: Math.floor(Math.random() * 1000)
       }

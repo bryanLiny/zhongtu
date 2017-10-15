@@ -9,7 +9,7 @@ Page({
     drawImg: 'http://bryanly.oss-cn-shenzhen.aliyuncs.com/chou.png',
     chanceCount: 1,
     //大转盘实例
-    btnDrawImg:'http://bryanly.oss-cn-shenzhen.aliyuncs.com/btndraw.png',
+    btnDrawImg: 'http://bryanly.oss-cn-shenzhen.aliyuncs.com/btndraw.png',
     circleList: [],//圆点数组
     awardList: [],//奖品数组
     colorCircleFirst: '#FFDF2F',//圆点颜色1
@@ -19,20 +19,44 @@ Page({
     indexSelect: 0,//被选中的奖品index
     isRunning: false,//是否正在抽奖
     imageAward: [
-      '../../../images/draw/1.png',
-      '../../../images/draw/2.png',
-      '../../../images/draw/3.png',
-      '../../../images/draw/4.png',
-      '../../../images/draw/5.png',
-      '../../../images/draw/6.png',
-      '../../../images/draw/7.png',
-      '../../../images/draw/8.png',
-    ],//奖品图片数组
-    recordsList:[
       {
-        id:"1",
-        tel:"177*****443",
-        goodName:"铠甲镀晶"
+        image: '../../../images/draw/1.png',
+        name:"TV KING7S"
+      },
+      {
+        image: '../../../images/draw/2.png',
+        name: "PPBOX 小黑"
+      },
+      {
+        image: '../../../images/draw/3.png',
+        name: "PPTV 一年会员"
+      },
+      {
+        image: '../../../images/draw/4.png',
+        name: "家电券 100元"
+      },
+      {
+        image: '../../../images/draw/5.png',
+        name: "速度与激情T恤"
+      },
+      {
+        image: '../../../images/draw/6.png',
+        name: "乐高玩具"
+      },
+      {
+        image: '../../../images/draw/7.png',
+        name: "侏罗纪T恤"
+      },
+      {
+        image: '../../../images/draw/8.png',
+        name: "IPHONE6S 16G"
+      }
+    ],//奖品图片数组
+    recordsList: [
+      {
+        id: "1",
+        tel: "177*****443",
+        goodName: "铠甲镀晶"
       }
     ]
   },
@@ -42,7 +66,7 @@ Page({
   onLoad: function (options) {
     this.loadDrawGame();
   },
-  goToMyAward:function(event){
+  goToMyAward: function (event) {
     wx.redirectTo({
       url: '../mine/mine',
     })
@@ -188,20 +212,22 @@ Page({
       isRunning: true
     })
     var _this = this;
-    var indexSelect = 0
+    var indexSelect = 0;
     var i = 0;
+    var randomMaxCount = Math.floor(Math.random() * 1000);
+    var _that = this;
     var timer = setInterval(function () {
       indexSelect++;
       //这里我只是简单粗暴用y=30*x+200函数做的处理.可根据自己的需求改变转盘速度
       i += 30;
-      if (i > 1000) {
+      if (i > randomMaxCount) {
         //去除循环
         clearInterval(timer)
         //获奖提示
-
+        var award = _that.data.awardList[_this.data.indexSelect + 1];
         wx.showModal({
-          title: '恭喜您',
-          content: '获得了第' + (_this.data.indexSelect + 1) + "个优惠券",
+          title: '恭喜您中奖',
+          content: '奖品：' + award.imageAward.name,
           showCancel: false,//去掉取消按钮
           success: function (res) {
             if (res.confirm) {
