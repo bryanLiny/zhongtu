@@ -9,7 +9,8 @@ Page({
     price: 50,
     total: 50,
     check: 'wechat',
-    checkImg: '../../../images//pintuan/arrow.png',
+    checkImg: '../../../images/pintuan/arrow.png',
+    uncheckedImg:'../../../images/pintuan/blank.png',
     wechatIcon: '../../../images/pintuan/wechat.png',
     huiyuanIcon: '../../../images/pintuan/huiyuan.png'
   },

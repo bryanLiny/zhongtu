@@ -29,7 +29,7 @@
       <text>微信支付</text>
     </view>
     <view class='inputgroup'>
-      <image class='checkIcon' src='{{check == "wechat"?checkImg:""}}'></image>
+      <image class='checkIcon' src='{{check == "wechat"?checkImg:uncheckedImg}}'></image>
     </view>
   </view>
   <view data-type="huiyuan" bindtap='checkPay' class='one'>
@@ -38,7 +38,7 @@
       <text>会员支付</text>
     </view>
     <view class='inputgroup'>
-      <image class='checkIcon' src='{{check == "huiyuan"?checkImg:""}}'></image>
+      <image class='checkIcon' src='{{check == "huiyuan"?checkImg:uncheckedImg}}'></image>
     </view>
   </view>
 </view>

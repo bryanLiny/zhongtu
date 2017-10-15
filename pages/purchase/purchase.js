@@ -34,7 +34,7 @@ Page({
         "price": "￥9.9",
         "saledCount": "已售" + Math.floor(Math.random() * 1000),
         "char_gt": ">",
-        "imgurl": "../../images/bg/baozi.png"
+        "imgurl": "http://bryanly.oss-cn-shenzhen.aliyuncs.com/baozi.png"
       })
     }
     this.setData({

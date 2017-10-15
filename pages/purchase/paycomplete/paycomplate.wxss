@@ -5,46 +5,48 @@ page{
 }
 .payInfo{
   background-color: #ffffff;
-  border-radius: 10px;
-  margin: 15px;
-  padding: 10px;
+  border-radius: 20rpx;
+  margin: 30rpx;
+  padding: 20rpx;
   text-align: center;
 }
 .payInfo .first{
-  height: 35px;
-  line-height: 35px;
+  height: 70rpx;
+  line-height: 70rpx;
   color: #333;
-  font-size: 16px;
+  font-size: 32rpx;
   font-weight: 600;
 }
 .payInfo .img{
-  width: 20px;
-  height: 20px;
+  width: 40rpx;
+  height: 40rpx;
   position: relative;
-  top: 5px;
-  margin-right: 10px;
+  top: 10rpx;
+  margin-right: 20rpx;
 }
 .payInfo .second{
   color: #999999;
-  font-size: 14px;
+  font-size: 28rpx;
 }
 .payInfo .count{
   color: #E02E24;
 }
 .success .third{
-  margin-top: 30px;
+  margin-top: 60rpx;
 }
 .success .third .primary{
-  height: 35px;
-  line-height: 35px;
+  height: 70rpx;
+  line-height: 70rpx;
+  font-size: 32rpx;
 }
 
 .error .third{
-  margin-top: 30px;
+  margin-top: 60rpx;
 }
 .error .third .warn{
-  height: 35px;
-  line-height: 35px;
+  height: 70rpx;
+  line-height: 70rpx;
+  font-size: 32rpx;
 }
 .show{
   display: block;
@@ -55,32 +57,32 @@ page{
 
 .message{
   background-color: #ffffff;
-  margin: 0 15px;
-  border-radius: 10px;
+  margin: 0 30rpx;
+  border-radius: 20rpx;
 }
 .message .detail{
-  padding: 15px 10px;
+  padding: 30rpx 20rpx;
 }
 .message .title{
-  font-size: 16px;
+  font-size: 32rpx;
   color: #323232;
   font-weight: 600;
 }
 
 .message .huise{
   color: #999999;
-  font-size: 14px;
+  font-size: 28rpx;
 }
 .message .detailTitle{
-  margin: 20px 0 10px;
-  font-size: 14px;
+  margin: 40rpx 0 20rpx;
+  font-size: 28rpx;
   color: #323232;
 }
 .message .me{
   color: #E02E24;
-  font-size: 14px;
-  padding-left: 10px;
-  height: 35px;
-  line-height: 35px;
+  font-size: 28rpx;
+  padding-left: 20rpx;
+  height: 70rpx;
+  line-height: 70rpx;
   border-top: 1px solid #eee;
 }

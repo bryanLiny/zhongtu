@@ -14,7 +14,7 @@ Page({
       "name": "3人拼一元免费洗车10次",
       "status": "已结束",
       "pCode":"899773975584",
-      "imgurl": "../../../images/bg/baozi.png"
+      "imgurl": "http://bryanly.oss-cn-shenzhen.aliyuncs.com/baozi.png"
     }
   },
 
@@ -42,7 +42,7 @@ Page({
         "status": util.getRandomArrayElement(["进行中", "报名中", "已结束"]),
         "count": Math.floor(Math.random() * 10),
         "char_gt": ">",
-        "imgurl": "../../../images/bg/baozi.png"
+        "imgurl": "http://bryanly.oss-cn-shenzhen.aliyuncs.com/baozi.png"
       })
     }
     this.setData({
