@@ -22,7 +22,10 @@
     "pages/crowdfunding/friendPay/friendPay",
     "pages/crowdfunding/pay/pay",
     "pages/crowdfunding/buy/buy",
-    "pages/crowdfunding/mine/mine"
+    "pages/crowdfunding/mine/mine",
+    "pages/crowdfunding/fpay/fpay",
+    "pages/crowdfunding/center/center",
+    "pages/purchase/center/center"
   ],
   "tabBar": {
     "list": [

@@ -83,6 +83,6 @@
     </view>
     <!-- <navigator open-type='share' class='right first'>请朋友付款</navigator> -->
     <!-- <navigator url='../friendPay/friendPay?id=111' class='right first'>请朋友付款</navigator> -->
-    <navigator url='../pay/pay?id=111' class='right'>立即付款</navigator>
+    <navigator url='../fpay/fpay?id=111' class='right'>立即付款</navigator>
   </view>
 </scroll-view>
