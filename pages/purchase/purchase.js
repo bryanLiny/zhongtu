@@ -1,5 +1,7 @@
 // pages/purchase/purchase.js
 import util from "../../utils/util.js";
+import httpsReq from "../../utils/httpsReq.js"
+const app = getApp();
 Page({
   /**
    * 页面的初始数据
@@ -10,35 +12,70 @@ Page({
     sort: [],
     activitylist: [], //会议室列表列表
     scrolltop: null, //滚动位置
-    page: 0  //分页
+    pageNo: 0,  //分页
+    memberInfo: null,
+    char_gt: '>'
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.fetchPurchaseData();
+    var memberInfo = null;
+    var getMenberInfo;
+    var that = this;
+    getMenberInfo = setInterval(function (evt) { // 启用定时器获取memberInfo数据，避免网络异步请求，memberInfo还未存储在本地，而page.onLoad已加载完成memberInfo报undefined或者null的问题
+      memberInfo = wx.getStorageSync('memberInfo');
+      if (memberInfo) {
+        console.log(memberInfo)
+        that.fetchPurchaseData(memberInfo);
+        that.setData({
+          memberInfo: memberInfo
+        });
+        clearInterval(getMenberInfo); // 获取成功，清除定时器
+      }
+    }, 500);
   },
-  fetchPurchaseData: function () {  //获取会议室列表
-    const perpage = 10;
+  scanCode: function (event) {
+    var that = this;
     this.setData({
-      page: this.data.page + 1
+      pageNo: 0
+    });
+    wx.scanCode({
+      success: (res) => {
+        var userId = res.result;
+        var memberInfo = that.data.memberInfo;
+        memberInfo.userId = userId;
+        that.setData({
+          memberInfo: memberInfo
+        });
+        console.log(memberInfo)
+        this.fetchPurchaseData(that.data.memberInfo);
+      }
     })
-    const page = this.data.page;
-    const newlist = [];
-    for (var i = (page - 1) * perpage; i < page * perpage; i++) {
-      newlist.push({
-        "id": i + 1,
-        "name": "只需9元，拼单3人购买价值69元金钱豹子汽车摆件",
-        "status": util.getRandomArrayElement(["进行中", "报名中", "已结束"]),
-        "price": "￥9.9",
-        "saledCount": "已售" + Math.floor(Math.random() * 1000),
-        "char_gt": ">",
-        "imgurl": "http://bryanly.oss-cn-shenzhen.aliyuncs.com/baozi.png"
-      })
-    }
-    this.setData({
-      activitylist: this.data.activitylist.concat(newlist)
+  },
+  fetchPurchaseData: function (memberInfo) {  //获取会议室列表
+    var that = this;
+    that.setData({
+      pageNo: that.data.pageNo + 1
+    })
+    const pageNo = that.data.pageNo;
+    // 获取活动列表
+    var url = app.globalData.serverPath + 'api/pt/ptActivities/list?pageNo=' + pageNo + '&pageSize=' + 10 + '&status=0&userId=' + memberInfo.userId;
+    var header = {
+      'authorization': memberInfo.memberId + '_' + memberInfo.token
+    };
+    httpsReq._get(url, header, function (res) {
+      var data = res.data.data;
+      console.log(data)
+      if (data) {
+        that.setData({
+          activitylist: that.data.activitylist.concat(data)
+        });
+      }
+    }, function (res) {
+      console.log('error')
+      console.log(res)
     })
   },
   setSortBy: function (e) { //选择排序方式
@@ -99,10 +136,10 @@ Page({
    */
   onPullDownRefresh: function () {
     this.setData({
-      page: 0,
+      pageNo: 0,
       activitylist: []
     })
-    this.fetchPurchaseData();
+    this.fetchPurchaseData(this.data.memberInfo);
     this.fetchSortData();
     setTimeout(() => {
       wx.stopPullDownRefresh()

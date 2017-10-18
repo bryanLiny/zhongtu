@@ -113,6 +113,7 @@ page {
 .detail-3 .top .icon {
   height: 40rpx;
   width: 40rpx;
+  margin-right: 20rpx;
 }
 
 .detail-3 .top .cell {

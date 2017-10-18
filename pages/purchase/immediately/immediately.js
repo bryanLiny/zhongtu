@@ -1,11 +1,17 @@
 // pages/purchaseDetail/purchaseDetail.js
-const util = require('../../../utils/util.js')
+const util = require('../../../utils/util.js');
+import httpsReq from "../../../utils/httpsReq.js";
+import timeUtil from "../../../utils/timeUtil.js";
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    timeCountDown: '',
+    endTime: '',
+    activityInfo: null,
     imgUrls: [
       'http://bryanly.oss-cn-shenzhen.aliyuncs.com/baozi.png',
       'http://bryanly.oss-cn-shenzhen.aliyuncs.com/car.png',
@@ -31,7 +37,32 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options.id)
+    var that = this;
+    var memberInfo = wx.getStorageSync('memberInfo');
+    // 获取活动列表
+    var url = app.globalData.serverPath + 'api/pt/ptActivities/info?actId=' + options.id + '&inviteId=';
+    var header = {
+      'authorization': memberInfo.memberId + '_' + memberInfo.token
+    };
+    httpsReq._get(url, header, function (res) {
+      var data = res.data.data;
+      console.log(data)
+      if (data) {
+        that.setData({
+          activityInfo: data,
+          endTime: data.endTime
+        })
+      }
+    }, function (res) {
+      console.log('error')
+      console.log(res)
+    });
+    setInterval(function () {
+      that.setData({
+        timeCountDown: timeUtil.countDown(that.data.endTime)
+      })
+    }, 1000);
   },
 
   /**

@@ -1,40 +1,43 @@
 <!--pages/purchaseDetail/purchaseDetail.wxml-->
 <swiper class='img-swiper' indicator-dots="{{indicatorDots}}" indicator-active-color='{{indicatorActivColor}}' autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-  <block wx:for="{{imgUrls}}" wx:key>
+  <!-- <block wx:for="{{imgUrls}}" wx:key>
     <swiper-item>
       <image mode='aspectFit' src="{{item}}" class="slide-image" />
     </swiper-item>
-  </block>
+  </block> -->
+  <swiper-item>
+    <image mode='aspectFit' src="{{activityInfo.imgUrl}}" class="slide-image" />
+  </swiper-item>
 </swiper>
 <view class='goodInfoBox'>
   <view class='infoLeft'>
-    <text>金钱豹子汽车摆件时钟</text>
+    <text>{{activityInfo.ptGood.name}}</text>
     <view class='priceBox'>
       <view class='priceLeft'>
         ￥
-        <text class='text'>9.9</text>
+        <text class='text'>{{activityInfo.ptGood.price}}</text>
       </view>
       <view class='priceRight'>
-        <text class='text'>原价￥89.5</text>
-        <text class='text'>已售232</text>
+        <text class='text'>原价￥{{activityInfo.ptGood.originalPrice}}</text>
+        <text class='text'>已售{{activityInfo.saleNum}}</text>
       </view>
     </view>
   </view>
   <image class='triangle' src='{{triangleImg}}'></image>
   <view class='infoRight'>
     <text class='text'>距离结束还剩</text>
-    <text class='text'>2天 09:09:32</text>
+    <text class='text'>{{timeCountDown}}</text>
   </view>
 </view>
 <view class='contactInfo'>
   <view class='left'>
     <view class='contact'>
       <image class='house' src='{{house}}'></image>
-      <text class='text'>众涂汽车美容（软件园二期店）</text>
+      <text class='text'>{{activityInfo.storeName}}</text>
     </view>
     <view class='contact'>
       <image class='addr' src='{{addr}}'></image>
-      <text class='text'>厦门市湖里区软件园二期观日路24号206</text>
+      <text class='text'>{{activityInfo.merchantAddress}}</text>
     </view>
   </view>
   <view data-tel="17749759443" bindtap='calling' class='right'>
@@ -46,7 +49,7 @@
     <text class='title'>消费提醒</text>
   </view>
   <view class='tips'>
-    <view class='tip'>1. 有效期：2017-09-01 至2017-09-30</view>
+    <view class='tip'>1. 有效期：{{activityInfo.beginTime}} 至{{activityInfo.endTime}}</view>
     <view class='tip'>2. 活动仅限高端客户</view>
     <view class='tip'>3. 需到店消费</view>
   </view>
@@ -54,7 +57,7 @@
 <view class='footer'>
   <view class='left'>
     再邀
-    <text>2</text>人购买即可享受优惠
+    <text>{{activityInfo.num}}</text>人购买即可享受优惠
   </view>
-  <navigator url='../pay/pay?id=111' class='right'>邀请好友拼团</navigator>
+  <navigator url='../pay/pay?id={{activityInfo.id}}' class='right'>立即抢购</navigator>
 </view>

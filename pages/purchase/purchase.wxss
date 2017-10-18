@@ -1,7 +1,9 @@
 /* pages/purchase/purchase.wxss */
-page{
+
+page {
   font-size: 30rpx;
 }
+
 .purchase-item {
   background-color: #fff;
   width: 90%;
@@ -68,4 +70,12 @@ page{
 .purchase-item-info .right {
   /* flex: 2; */
   text-align: right;
+}
+
+.scanCode {
+  font-size: 32rpx;
+  position: fixed;
+  bottom: 10rpx;
+  right: 10rpx;
+  background-color: rgba(224, 46, 36, 0.5) !important;
 }

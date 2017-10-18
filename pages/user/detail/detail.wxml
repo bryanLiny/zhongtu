@@ -31,7 +31,7 @@
         <text class='title'>{{index}}.{{item.title}}</text>
         <view class='cell' wx:for="{{item.items}}" wx:for-item="cell" wx:key="{{cell.id}}">
           <image data-parentId="{{item.id}}" data-id="{{cell.id}}" data-check="{{cell.checked}}" bindtap='changeState' class='icon' src='{{cell.checked?ckeckImg:unckeckImg}}'></image>
-          <text space='emsp'> {{cell.name}}</text>
+          <text>{{cell.name}}</text>
         </view>
       </view>
     </view>

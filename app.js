@@ -1,49 +1,25 @@
 //app.js
 App({
   globalData: {
-    userInfo: null,
+    userInfo: null, // 包含了微信用户的昵称和头像地址
+    openid: '',
     appid: 'wx15d6ca4ad6e41cd8',//appid需自己提供，此处的appid我随机编写  
     secret: '84f45a7e8b406edf3f802d8bbdbd7aa6',//secret需自己提供，此处的secret我随机编写  
-  }, 
+    serverPath: 'https://www.baby25.cn/jeesite/'
+  },
   onLaunch: function () {
     // 登录
     var that = this;
-    var user = wx.getStorageSync('user') || {};
-    var userInfo = wx.getStorageSync('userInfo') || {};
-    if ((!user.openid || (user.expires_in || Date.now()) < (Date.now() + 600)) && (!userInfo.nickName)) {
-      wx.login({
-        success: function (res) {
-          if (res.code) {
-            wx.getUserInfo({
-              success: function (res) {
-                var objz = {};
-                objz.avatarUrl = res.userInfo.avatarUrl;
-                objz.nickName = res.userInfo.nickName;
-                //console.log(objz);  
-                wx.setStorageSync('userInfo', objz);//存储userInfo  
-              }
-            });
-            var d = that.globalData;//这里存储了appid、secret、token串    
-            var l = 'https://api.weixin.qq.com/sns/jscode2session?appid=' + d.appid + '&secret=' + d.secret + '&js_code=' + res.code + '&grant_type=authorization_code';
-            wx.request({
-              url: l,
-              data: {},
-              method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT    
-              // header: {}, // 设置请求的 header    
-              success: function (res) {
-                var obj = {};
-                obj.openid = res.data.openid;
-                obj.expires_in = Date.now() + res.data.expires_in;
-                console.log(obj);
-                wx.setStorageSync('user', obj);//存储openid    
-              }
-            });
-          } else {
-            console.log('获取用户登录态失败！' + res.errMsg)
-          }
+    wx.login({
+      success: function (res) {
+        // 登录成功，获取到code值，可依据code获取openID
+        if (res.code) {
+          that.getOpenId(res.code);
+        } else {
+          console.log('获取用户登录态失败！' + res.errMsg)
         }
-      });
-    }
+      }
+    });
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -61,6 +37,72 @@ App({
             }
           })
         }
+      }
+    })
+  },
+  getOpenId: function (code) {
+    var that = this;
+    var url = that.globalData.serverPath + 'api/common/member/getOpenId';
+    wx.request({
+      url: url,
+      data: {
+        code: code
+      },
+      method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT    
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      }, // 设置请求的 header    
+      success: function (res) {
+        var data = res.data.data;
+        var openid = data.openid;
+        // 设置全局变量的值
+        that.globalData.openid = openid;
+        // 将token存储到本地
+        wx.setStorageSync('openid', openid);
+        // wx.setStorage({
+        //   'key': 'openid',
+        //   'data': openid,
+        // });
+        that.getMemberLogin(openid);
+      }
+    });
+  },
+  getMemberLogin: function (openid) {
+    var that = this;
+    var url = that.globalData.serverPath + 'api/common/member';
+    var memberInfo = {};
+    wx.getUserInfo({
+      success: res => {
+        // 可以将 res 发送给后台解码出 unionId
+        var userInfo = res.userInfo
+        wx.request({
+          url: url,
+          data: {
+            key: openid,
+            name: userInfo.nickName,
+            mobile: '',
+            imgUrl: userInfo.avatarUrl,
+          },
+          method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT    
+          header: {
+            'content-type': 'application/x-www-form-urlencoded'
+          }, // 设置请求的 header    
+          success: function (res) {
+            // console.log(res);
+            var data = res.data;
+            if (data.code == '0') {
+              data = data.data;
+              memberInfo.memberId = data.memberId;
+              memberInfo.userId = data.memberId;
+              memberInfo.token = data.token;
+            } else {
+              memberInfo.memberId = '';
+              memberInfo.userId = '';
+              memberInfo.token = '';
+            }
+            wx.setStorageSync('memberInfo', memberInfo);
+          }
+        });
       }
     })
   }

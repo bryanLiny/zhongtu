@@ -24,7 +24,8 @@ page {
 }
 
 .inputgroup, .textgroup {
-  display: inline-block;
+  display: flex;
+  align-items: center;
 }
 
 .textgroup {
@@ -36,8 +37,10 @@ page {
 }
 
 .inputgroup .option {
-  display: inline-block;
+  display: block;
   width: 33px;
+  height: 33px;
+  line-height: 30px;
   text-align: center;
   background-color: #e0e0e0;
   color: #58595b;
